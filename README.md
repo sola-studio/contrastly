@@ -94,6 +94,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_SOLA_STUDIO_URL=https://your-studio-url.com
 NEXT_PUBLIC_GITHUB_REPOSITORY_URL=https://github.com/your-org/contrastly
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=abc123xyz
 ```
 
 Notes:
@@ -102,6 +103,7 @@ Notes:
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` is optional. If omitted, no Google Analytics script is injected.
 - `NEXT_PUBLIC_SOLA_STUDIO_URL` is optional. If omitted, the related footer link is not shown.
 - `NEXT_PUBLIC_GITHUB_REPOSITORY_URL` is optional. If omitted, the related footer link is not shown.
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is optional. If set, the value is included as a Google site verification meta tag. This is a public value issued by Google Search Console and is safe to expose in HTML.
 
 ### Production Build
 

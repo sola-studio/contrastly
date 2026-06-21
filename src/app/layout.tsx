@@ -16,11 +16,18 @@ if (
   );
 }
 
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'Contrastly – Tailwind CSS Color Contrast Checker | Sola Studio',
   description:
     'Use Contrastly to check WCAG color contrast between Tailwind CSS colors, custom hex values, and semantic color tokens in your browser.',
+  verification: googleSiteVerification
+    ? {
+        google: googleSiteVerification,
+      }
+    : undefined,
   openGraph: {
     title: 'Contrastly – Tailwind CSS Color Contrast Checker | Sola Studio',
     description:
