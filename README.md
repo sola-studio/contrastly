@@ -158,7 +158,7 @@ This project is maintained on a best-effort basis. Use of the source code is gov
 
 ## Maintainer
 
-Contrastly is built and maintained by Sola Studio, and is currently developed by Yoko Shiina.
+Contrastly is built and maintained by Sola Studio, with ongoing development by Yoko Shiina.
 
 - Live app: https://contrastly.solastudio.studio/
 - Source code: https://github.com/sola-studio/contrastly
