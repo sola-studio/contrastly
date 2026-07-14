@@ -17,13 +17,13 @@ export default function LegalArticle({
         {title}
       </h2>
       {isList ? (
-        <ul className="list-disc pl-6 text-slate-500 space-y-1">
+        <ul className="list-disc pl-6 text-slate-600 space-y-1">
           {(content as string[]).map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
       ) : (
-        <p className="text-slate-500">{content}</p>
+        <p className="text-slate-600">{content}</p>
       )}
     </article>
   );

@@ -8,7 +8,7 @@ const GITHUB_REPOSITORY_URL = process.env.NEXT_PUBLIC_GITHUB_REPOSITORY_URL;
 
 export const Footer = () => {
   return (
-    <footer className="w-full py-8 px-4 border-t text-sm text-slate-500 text-center space-y-3 bg-slate-50">
+    <footer className="w-full py-8 px-4 border-t text-sm text-slate-600 text-center space-y-3 bg-slate-50">
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
         <Link
           href="/"
@@ -22,7 +22,7 @@ export const Footer = () => {
             <OuterLink
               href={GITHUB_REPOSITORY_URL}
               label="Source on GitHub"
-              className="text-slate-500 underline hover:text-foreground transition-colors"
+              className="text-slate-600 underline hover:text-foreground transition-colors"
             />
             <div className="hidden sm:inline">|</div>
           </>

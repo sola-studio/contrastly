@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <section
-      className="px-4 py-8 text-sm text-slate-500 leading-relaxed bg-slate-50 border-t"
+      className="px-4 py-8 text-sm text-slate-600 leading-relaxed bg-slate-50 border-t"
       aria-labelledby="about"
     >
       <div className="max-w-2xl mx-auto">

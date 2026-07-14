@@ -76,7 +76,7 @@ export default function ContrastChecker() {
             Color Selector
           </h2>
           <div
-            className="flex items-start justify-between sm:w-105"
+            className="flex items-start justify-between gap-4 sm:w-105"
             role="radiogroup"
             aria-labelledby="color-selector"
             aria-orientation="horizontal"

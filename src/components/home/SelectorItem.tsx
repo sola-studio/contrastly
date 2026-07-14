@@ -78,11 +78,11 @@ export default function SelectorItem({
         handleClickSelecter(targetItemType);
       }}
       className={`relative flex flex-col items-center gap-3 rounded-lg p-4 shadow cursor-pointer
-       border text-slate-700
+       border text-slate-700 w-full
        ${
-         isSelected ? 'border-blue-500' : 'border-gray-200 dark:border-gray-700'
+         isSelected ? 'border-blue-700' : 'border-gray-200 dark:border-gray-700'
        }
-        focus-within:ring-2  focus-within:ring-blue-500  focus-within:ring-offset-2
+        focus-within:ring-2  focus-within:ring-blue-700  focus-within:ring-offset-2
         focus-within:ring-offset-white  dark:focus-within:ring-offset-gray-900`}
     >
       {/* Visually hidden real radio input — carries radio semantics without nesting interactive controls */}
@@ -150,11 +150,11 @@ export default function SelectorItem({
       </span>
 
       <div
-        className="h-14 w-14 rounded border" // xl:h-18 xl:w-18
+        className="h-14 w-14 rounded border border-slate-500" // xl:h-18 xl:w-18
         style={{ backgroundColor: targetColor.hex }}
         aria-hidden="true"
       />
-      <span className="text-sm text-slate-500">{targetColor.name}</span>
+      <span className="text-sm text-slate-600">{targetColor.name}</span>
 
       {/* HEX Input Field (Intermediate input allowed) */}
       <div
@@ -177,7 +177,7 @@ export default function SelectorItem({
               setHexDraft(targetColor.hex.toUpperCase());
             }
           }}
-          className="w-24 p-2 border rounded text-md font-mono"
+          className={`w-24 h-11 p-2 border-2 rounded text-md font-mono placeholder:text-slate-500 ${isSelected ? 'border-slate-700' : 'border-slate-400'}`}
           aria-label={`${title} hex value`}
           placeholder="#RRGGBB"
           tabIndex={isSelected ? 0 : -1} // ★ Do not stop Tab in non-selected cards
@@ -212,7 +212,7 @@ export default function SelectorItem({
           />
         ) : (
           <button
-            className="relative inline-flex items-center justify-center text-sm text-indigo-600 hover:text-indigo-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 h-12 min-w-12 px-3 cursor-pointer"
+            className="relative inline-flex items-center justify-center text-sm text-indigo-600 hover:text-indigo-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 h-12 min-w-12 px-3 cursor-pointer"
             onClick={() => handleUseColorPicker(targetItemType)}
             type="button"
             aria-expanded={!!pickerMode[targetItemType]}
