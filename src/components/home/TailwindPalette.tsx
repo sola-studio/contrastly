@@ -137,7 +137,7 @@ export default function TailwindPalette({
                             className={cn(
                               'w-12 h-12 rounded-sm border border-slate-500 cursor-pointer',
                               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700',
-                              'focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900',
+                              'focus-visible:ring-offset-2 focus-visible:ring-offset-white',
                               selectedColor === key && 'ring-2 ring-blue-700',
                               textColor === '#FFFFFF'
                                 ? 'text-white'

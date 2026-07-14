@@ -24,7 +24,7 @@ export default function OuterLink({
     <a
       href={href}
       className={cn(
-        ' text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900',
+        ' text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white',
         className
       )}
       rel="noopener noreferrer"

@@ -85,7 +85,7 @@ export default function ResultSection({
                 <button
                   type="button"
                   aria-label="What counts as normal text?"
-                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <InfoIcon
                     className="w-4 h-4"
@@ -126,7 +126,7 @@ export default function ResultSection({
                 <button
                   type="button"
                   aria-label="What counts as large text?"
-                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <InfoIcon
                     className="w-4 h-4"
