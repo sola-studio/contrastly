@@ -50,7 +50,7 @@ export default function ResultSection({
 
   return (
     <section
-      className="bg-white px-12 py-6 sm:p-6 rounded-lg border shadow w-full sm:max-w-105 xl:flex xl:flex-col xl:justify-center lg:items-start text-slate-700"
+      className="px-12 py-6 sm:p-6 rounded-lg w-full bg-slate-50 border shadow sm:max-w-105 xl:flex xl:flex-col xl:justify-center lg:items-start text-slate-700"
       aria-labelledby="contrast-check-result"
     >
       <h2
@@ -60,7 +60,7 @@ export default function ResultSection({
         Contrast Check Results
       </h2>
       <p className="mb-5">
-        <span className="text-sm text-slate-500">Contrast ratio: </span>
+        <span className="text-sm text-slate-600">Contrast ratio: </span>
         <span className="font-medium text-3xl">
           {formatContrastLikeWebAIM(contrast)}
         </span>
@@ -79,13 +79,13 @@ export default function ResultSection({
         {/* Normal text */}
         <div className="mb-8 xl:mb-4 lg:mb-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-sm text-slate-500">Normal Text</span>
+            <span className="text-sm text-slate-600">Normal Text</span>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
                   type="button"
                   aria-label="What counts as normal text?"
-                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <InfoIcon
                     className="w-4 h-4"
@@ -120,13 +120,13 @@ export default function ResultSection({
         {/* Large text */}
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-sm text-slate-500">Large Text</span>
+            <span className="text-sm text-slate-600">Large Text</span>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
                   type="button"
                   aria-label="What counts as large text?"
-                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900"
+                  className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <InfoIcon
                     className="w-4 h-4"
@@ -167,7 +167,7 @@ export default function ResultSection({
       >
         <Link
           href="https://github.com/sola-studio/contrastly"
-          className="inline-flex items-center gap-1.5 text-sm text-blue-700 underline underline-offset-2 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+          className="inline-flex items-center gap-1.5 text-sm text-blue-700 underline underline-offset-2 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 rounded"
           target="_blank"
           rel="noopener noreferrer"
         >

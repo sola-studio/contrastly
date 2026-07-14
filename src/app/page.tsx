@@ -4,8 +4,9 @@ import { Header } from '@/components/layout/Header';
 import { ToastContainer } from 'react-toastify';
 import About from '@/components/home/About';
 import { SkipLinks } from '@/components/layout/SkipLinks';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Contrastly – Tailwind CSS Color Contrast Checker | Sola Studio',
   description:
     'Use Contrastly to check WCAG color contrast between Tailwind CSS colors, custom hex values, and semantic color tokens in your browser.',

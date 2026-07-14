@@ -1,13 +1,13 @@
 export default function About() {
   return (
     <section
-      className="px-4 py-8 text-sm text-slate-500 leading-relaxed bg-slate-50 border-t"
-      aria-labelledby="about"
+      className="px-4 py-8 text-sm text-slate-600 leading-relaxed bg-slate-50 border-t"
+      aria-labelledby="about-heading"
     >
       <div className="max-w-2xl mx-auto">
         <h2
           className="text-base font-semibold text-slate-700 mb-3 text-center inline-flex items-center gap-2 justify-center"
-          id="about"
+          id="about-heading"
         >
           About
           <span className="tracking-widest uppercase font-normal">

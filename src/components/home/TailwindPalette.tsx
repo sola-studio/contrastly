@@ -80,7 +80,7 @@ export default function TailwindPalette({
   };
 
   return (
-    <div className="overflow-x-auto text-slate-500">
+    <div className="overflow-x-auto text-slate-600">
       <table
         className="border-collapse w-full" /* Keep as table for visual purposes */
       >
@@ -135,10 +135,10 @@ export default function TailwindPalette({
                             }}
                             style={{ backgroundColor: hex }}
                             className={cn(
-                              'w-12 h-12 rounded-sm border border-gray-300 cursor-pointer',
-                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500',
-                              'focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900',
-                              selectedColor === key && 'ring-2 ring-blue-500',
+                              'w-12 h-12 rounded-sm border border-slate-500 cursor-pointer',
+                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700',
+                              'focus-visible:ring-offset-2 focus-visible:ring-offset-white',
+                              selectedColor === key && 'ring-2 ring-blue-700',
                               textColor === '#FFFFFF'
                                 ? 'text-white'
                                 : 'text-black',
