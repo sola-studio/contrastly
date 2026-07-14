@@ -50,18 +50,18 @@ export default function ResultSection({
 
   return (
     <section
-      className="px-12 py-6 sm:p-6 rounded-lg w-full bg-slate-50 border shadow sm:max-w-105 xl:flex xl:flex-col xl:justify-center lg:items-start text-slate-700"
+      className="px-6 py-6 sm:p-6 w-full bg-slate-50 border shadow sm:max-w-105 xl:flex xl:flex-col xl:justify-center lg:items-start text-slate-700"
       aria-labelledby="contrast-check-result"
     >
       <h2
-        className="text-base font-sm mb-2 uppercase tracking-widest text-slate-700"
+        className="text-base font-sm mb-4 uppercase tracking-widest text-slate-700"
         id="contrast-check-result"
       >
         Contrast Check Results
       </h2>
       <p className="mb-5">
-        <span className="text-sm text-slate-600">Contrast ratio: </span>
-        <span className="font-medium text-3xl">
+        <span className="text-xs text-slate-600 mr-1">Contrast ratio: </span>
+        <span className="font-medium text-2xl">
           {formatContrastLikeWebAIM(contrast)}
         </span>
       </p>
@@ -75,11 +75,11 @@ export default function ResultSection({
       >
         {srText}
       </p>
-      <div className="space-y-3 lg:flex lg:flex-row lg:justify-between lg:gap-3 mb-4">
+      <div className="space-y-3 lg:flex lg:flex-row lg:justify-between lg:gap-3">
         {/* Normal text */}
         <div className="mb-8 xl:mb-4 lg:mb-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-sm text-slate-600">Normal Text</span>
+            <span className="text-xs text-slate-600">Normal Text</span>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
@@ -120,7 +120,7 @@ export default function ResultSection({
         {/* Large text */}
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-sm text-slate-600">Large Text</span>
+            <span className="text-xs text-slate-600">Large Text</span>
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
@@ -160,25 +160,6 @@ export default function ResultSection({
           </div>
         </div>
       </div>
-
-      <footer
-        className="mt-12 sm:mt-10 xl:mt-3"
-        aria-label="More information about how contrast is calculated"
-      >
-        <Link
-          href="https://github.com/sola-studio/contrastly"
-          className="inline-flex items-center gap-1.5 text-sm text-blue-700 underline underline-offset-2 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 rounded"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          How the contrast is calculated
-          <ExternalLink size={12} aria-hidden="true" focusable="false" />
-        </Link>
-
-        <span className="sr-only">
-          (internal link to About page, formula section)
-        </span>
-      </footer>
     </section>
   );
 }

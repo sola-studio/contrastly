@@ -90,13 +90,13 @@ export default function TailwindPalette({
 
         <thead>
           <tr>
-            <th className="text-left p-2 font-normal text-sm" scope="col">
+            <th className="text-left p-2 font-normal text-xs" scope="col">
               Shade
             </th>
             {colorNames.map((colorName) => (
               <th
                 key={colorName}
-                className="p-1 capitalize text-sm font-normal"
+                className="p-1 capitalize text-xs font-normal"
                 scope="col"
               >
                 {colorName}
@@ -108,7 +108,7 @@ export default function TailwindPalette({
         <tbody>
           {shades.map((shade, r) => (
             <tr key={shade}>
-              <th className="pr-3 text-sm font-normal" scope="row">
+              <th className="text-xs font-normal" scope="row">
                 {shade}
               </th>
 
@@ -135,7 +135,7 @@ export default function TailwindPalette({
                             }}
                             style={{ backgroundColor: hex }}
                             className={cn(
-                              'w-12 h-12 rounded-sm border border-slate-500 cursor-pointer',
+                              'w-11 h-11 rounded-sm border border-slate-500 cursor-pointer',
                               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700',
                               'focus-visible:ring-offset-2 focus-visible:ring-offset-white',
                               selectedColor === key && 'ring-2 ring-blue-700',

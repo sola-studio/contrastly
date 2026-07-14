@@ -77,7 +77,7 @@ export default function SelectorItem({
         document.getElementById(radioId)?.focus();
         handleClickSelecter(targetItemType);
       }}
-      className={`relative flex flex-col items-center gap-3 rounded-lg p-4 shadow cursor-pointer
+      className={`relative flex flex-col items-center gap-3 rounded-lg p-2 sm:p-4 shadow cursor-pointer
        border text-slate-700 w-full
        ${isSelected ? 'border-2 border-blue-700' : 'border-slate-500'}
         focus-within:ring-2  focus-within:ring-blue-700  focus-within:ring-offset-2
