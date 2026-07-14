@@ -55,10 +55,10 @@ export default function ContrastChecker() {
     setPickerMode((p) => ({ ...p, [type]: true }));
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8 p-6 xl:flex-row xl:w-full xl:items-start xl:min-h-1/3 xl:gap-6 bg-white">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-8 p-4 xl:flex-row xl:w-full xl:items-start xl:min-h-1/3 xl:gap-3 bg-white">
       <h1 className="sr-only">Contrastly - Tailwind color contrast checker</h1>
 
-      <div className="sm:w-full flex flex-col gap-4 justify-center items-center xl:flex-1 xl:gap-5 xl:flex-col-reverse">
+      <div className="sm:w-full flex flex-col gap-4 justify-center items-center lg:flex-row xl:flex-1 xl:gap-5 xl:flex-col">
         {/* Contrast Result */}
         <ResultSection
           checkPass={checkPass}
