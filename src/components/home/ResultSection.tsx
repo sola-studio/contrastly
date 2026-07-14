@@ -50,7 +50,7 @@ export default function ResultSection({
 
   return (
     <section
-      className="bg-white px-12 py-6 sm:p-6 rounded-lg border shadow w-full sm:max-w-105 xl:flex xl:flex-col xl:justify-center lg:items-start text-slate-700"
+      className="px-12 py-6 sm:p-6 rounded-lg w-full bg-slate-50 border shadow sm:max-w-105 xl:flex xl:flex-col xl:justify-center lg:items-start text-slate-700"
       aria-labelledby="contrast-check-result"
     >
       <h2
