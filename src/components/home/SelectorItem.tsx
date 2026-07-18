@@ -210,7 +210,7 @@ export default function SelectorItem({
           />
         ) : (
           <button
-            className="relative inline-flex items-center justify-center text-sm text-indigo-600 hover:text-indigo-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 h-12 min-w-12 px-3 cursor-pointer"
+            className="relative inline-flex items-center justify-center text-sm text-indigo-600 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 h-12 min-w-12 px-3 cursor-pointer hover:text-indigo-900"
             onClick={() => handleUseColorPicker(targetItemType)}
             type="button"
             aria-expanded={!!pickerMode[targetItemType]}
