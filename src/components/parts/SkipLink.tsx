@@ -23,7 +23,7 @@ export const SkipLink = ({ href, className, children }: Props) => {
       }}
       className={`sr-only
            focus:not-sr-only focus:fixed focus:left-3 focus:z-100
-           focus:bg-background focus:text-foreground focus:px-3 focus:py-2 focus:rounded-md focus:outline
+           focus:bg-background focus:text-foreground focus:px-3 focus:py-2 focus:rounded-xs focus:outline
            focus-visible:not-sr-only focus-visible:fixed focus-visible:left-3 focus-visible:z-100
            focus-visible:bg-background focus-visible:text-foreground focus-visible:px-3 focus-visible:py-2
            focus-visible:rounded-md focus-visible:outline ${className ?? ''}`}

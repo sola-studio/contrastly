@@ -6,14 +6,14 @@ import { CookieSettingsButton } from '../lib/CookieSettingsButton';
 const SOLA_STUDIO_URL = process.env.NEXT_PUBLIC_SOLA_STUDIO_URL;
 const GITHUB_REPOSITORY_URL = process.env.NEXT_PUBLIC_GITHUB_REPOSITORY_URL;
 
+const classNameForLink =
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:rounded-xs text-slate-600 underline hover:text-blue-700 transition-colors';
+
 export const Footer = () => {
   return (
     <footer className="w-full py-8 px-4 border-t text-sm text-slate-600 text-center space-y-3 bg-slate-50">
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-        <Link
-          href="/"
-          className="underline hover:text-foreground transition-colors"
-        >
+        <Link href="/" className={classNameForLink}>
           Contrast Checker
         </Link>
         <div className="hidden sm:inline">|</div>
@@ -22,27 +22,21 @@ export const Footer = () => {
             <OuterLink
               href={GITHUB_REPOSITORY_URL}
               label="Source on GitHub"
-              className="text-slate-600 underline hover:text-foreground transition-colors"
+              className={classNameForLink}
             />
             <div className="hidden sm:inline">|</div>
           </>
         )}
 
-        <CookieSettingsButton className="underline hover:text-foreground transition-colors cursor-pointer">
+        <CookieSettingsButton className={classNameForLink}>
           Cookie Settings
         </CookieSettingsButton>
         <div className="hidden sm:inline">|</div>
-        <Link
-          href="/privacy"
-          className="underline hover:text-foreground transition-colors"
-        >
+        <Link href="/privacy" className={classNameForLink}>
           Privacy Policy
         </Link>
         <div className="hidden sm:inline">|</div>
-        <Link
-          href="/terms"
-          className="underline hover:text-foreground transition-colors"
-        >
+        <Link href="/terms" className={classNameForLink}>
           Terms
         </Link>
       </div>
@@ -53,7 +47,7 @@ export const Footer = () => {
           <OuterLink
             href={SOLA_STUDIO_URL}
             label="Sola Studio"
-            className="underline hover:text-foreground transition-colors"
+            className={classNameForLink}
           />
           · Open source color contrast tool
         </p>

@@ -23,10 +23,7 @@ export default function OuterLink({
   return (
     <a
       href={href}
-      className={cn(
-        ' text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white',
-        className
-      )}
+      className={className}
       rel="noopener noreferrer"
       target="_blank"
     >
