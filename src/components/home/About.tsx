@@ -22,9 +22,11 @@ export default function About() {
             Contrastly
           </span>{' '}
           is a lightweight open-source tool for checking color contrast while
-          working with Tailwind CSS palettes, custom hex values, and semantic
-          color tokens. It helps you compare foreground and background colors in
-          real time and make accessibility part of everyday UI decisions.
+          working with Tailwind CSS. Select colors directly from the palette,
+          compare foreground and background combinations in real time, or enter
+          custom hex values when needed. It helps make accessibility checks part
+          of everyday UI implementation, without interrupting your workflow to
+          look up and transfer color values between tools.
         </p>
         <footer
           className="mt-12 sm:mt-10 xl:mt-3"
@@ -39,10 +41,6 @@ export default function About() {
             How the contrast is calculated
             <ExternalLink size={12} aria-hidden="true" focusable="false" />
           </Link>
-
-          <span className="sr-only">
-            (internal link to About page, formula section)
-          </span>
         </footer>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { formatContrastLikeWebAIM } from '@/helpers/contrasts';
 import { useEffect, useRef, useState } from 'react';
 
-interface UseStatusSrTextWithAriaBusyProps {
+interface UseStatusSrTextProps {
   contrast: number;
   aaNormal: boolean;
   aaLarge: boolean;
@@ -15,34 +15,43 @@ export function useStatusSrTextWithAriaBusy({
   aaLarge,
   aaaNormal,
   aaaLarge,
-}: UseStatusSrTextWithAriaBusyProps) {
-  // Update the live region only once when consecutive changes settle (e.g., 200–300ms)
-  // Set aria-busy="true" while changes are happening, and update the text when settled
-  // Many screen readers behave as "do not read while busy → read only the latest after busy is cleared", canceling/merging previous readings
+}: UseStatusSrTextProps) {
+  const [srText, setSrText] = useState('');
+  const [busy, setBusy] = useState(false);
+  const isInitialRender = useRef(true);
 
-  const [srText, setSrText] = useState<string>('');
-  const [busy, setBusy] = useState<boolean>(false);
-  const statusRef = useRef<HTMLParagraphElement>(null);
+  const spokenContrastRatio = formatContrastLikeWebAIM(contrast).replace(
+    ':1',
+    ' to 1'
+  );
 
-  const statusSrText =
-    `Contrast ratio ${formatContrastLikeWebAIM(contrast)} to 1. ` +
-    `AA normal ${aaNormal ? 'pass' : 'fail'}, ` +
-    `AA large ${aaLarge ? 'pass' : 'fail'}, ` +
-    `AAA normal ${aaaNormal ? 'pass' : 'fail'}.` +
-    `AAA large ${aaaLarge ? 'pass' : 'fail'}`;
+  const statusSrText = [
+    `Contrast ratio ${spokenContrastRatio}.`,
+    `Normal text: AA ${aaNormal ? 'pass' : 'fail'}, AAA ${
+      aaaNormal ? 'pass' : 'fail'
+    }.`,
+    `Large text: AA ${aaLarge ? 'pass' : 'fail'}, AAA ${
+      aaaLarge ? 'pass' : 'fail'
+    }.`,
+  ].join(' ');
 
-  // While changes are happening, set busy to true, and once settled, update the text
   useEffect(() => {
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
+
     setBusy(true);
-    const t = setTimeout(() => {
-      setBusy(false);
+
+    const timeoutId = window.setTimeout(() => {
       setSrText(statusSrText);
-    }, 250); // Adjust as needed, e.g., 150–400ms
-    return () => clearTimeout(t);
+      setBusy(false);
+    }, 250);
+
+    return () => window.clearTimeout(timeoutId);
   }, [statusSrText]);
 
   return {
-    statusRef,
     busy,
     srText,
   };
