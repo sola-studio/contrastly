@@ -37,7 +37,7 @@ export default function FloatingNavButton() {
     <button
       type="button"
       onClick={showUp ? scrollToTop : scrollToPalette}
-      className="fixed bottom-4 right-4 bg-gray-700 text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center hover:bg-gray-800 transition cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+      className="fixed bottom-4 right-4 bg-gray-700 text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center hover:bg-gray-800 motion-safe:transition cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       aria-label={
         showUp
           ? 'Back to top, where contrast results are displayed'

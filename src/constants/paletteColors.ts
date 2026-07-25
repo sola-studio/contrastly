@@ -1,14 +1,15 @@
 import { SelectedColorState } from '@/types/content';
 
-export const sampleText = 'Color Contrast';
+export const sampleTextForNormalText = 'Button label';
+export const sampleTextForLargeText = 'Primary action';
 
 export const defaultBgColor: SelectedColorState = {
-  name: 'white',
-  hex: '#FFFFFF',
+  name: 'blue-600',
+  hex: '#2563EB',
 };
 export const defaultFgColor: SelectedColorState = {
-  name: 'black',
-  hex: '#000000',
+  name: 'white',
+  hex: '#FFFFFF',
 };
 
 export const colorPaletteSectionId = 'color-palette';

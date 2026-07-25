@@ -1,6 +1,6 @@
 # Contrastly
 
-Contrastly is a small browser-based color contrast checker for Tailwind CSS palettes, custom hex values, and semantic color token decisions.
+Contrastly is an open-source color contrast checker that lets you select Tailwind colors directly from the palette—without looking up hex values or switching between tools.
 
 It is designed for frontend developers, designers, and anyone working on accessibility-aware interface colors.
 
@@ -24,7 +24,7 @@ Contrastly may be useful when you are:
 - checking foreground and background color combinations
 - designing accessible UI components
 - learning about WCAG contrast requirements
-- building or reviewing semantic color tokens
+- evaluating color combinations for semantic color tokens
 - reviewing interface colors during implementation
 
 It is especially useful when you want to move quickly while still keeping accessibility part of everyday frontend decisions.
@@ -35,10 +35,9 @@ It is especially useful when you want to move quickly while still keeping access
 - Custom hex color input
 - Copy buttons for quick iteration
 - Real-time WCAG AA / AAA contrast checks
-- Support for common foreground and background combinations
-- Keyboard-friendly interaction
+- Keyboard-operable color selection
 - Reduced-motion support
-- Screen-reader-aware UI patterns
+- Screen reader announcements for color selections and updated contrast results
 - Fast, lightweight interface for everyday use
 
 ## How contrast is calculated

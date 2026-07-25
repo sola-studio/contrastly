@@ -1,9 +1,15 @@
-import { sampleText } from '@/constants';
+import {
+  sampleTextForNormalText,
+  sampleTextForLargeText,
+} from '@/constants/paletteColors';
 import { formatContrastLikeWebAIM } from '@/helpers/contrasts';
 import { useStatusSrTextWithAriaBusy } from '@/hooks/useStatusSrTextWithAriaBusy';
-import { BookOpenIcon, ExternalLink, InfoIcon } from '@/lib/lucide';
-import { SelectedColorState, WCAGCheckSize, WCAGType } from '@/types/content';
-import Link from 'next/link';
+import { InfoIcon } from '@/lib/lucide';
+import type {
+  SelectedColorState,
+  WCAGCheckSize,
+  WCAGType,
+} from '@/types/content';
 import InlineTagWithEmoji from '../parts/InlineTagWithEmoji';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
@@ -25,7 +31,7 @@ export default function ResultSection({
   const aaaNormal = checkPass(contrast, 'AAA', 'normal');
   const aaaLarge = checkPass(contrast, 'AAA', 'large');
 
-  const { statusRef, busy, srText } = useStatusSrTextWithAriaBusy({
+  const { busy, srText } = useStatusSrTextWithAriaBusy({
     contrast,
     aaNormal,
     aaLarge,
@@ -67,9 +73,7 @@ export default function ResultSection({
       </p>
       <p
         role="status"
-        aria-live="polite"
         className="sr-only"
-        ref={statusRef}
         aria-atomic="true"
         aria-busy={busy || undefined}
       >
@@ -95,8 +99,9 @@ export default function ResultSection({
                 </button>
               </TooltipTrigger>
               <TooltipContent>
-                Text smaller than 18px (non-bold) or smaller than 14px (bold).
-                Requires a minimum contrast ratio of 4.5:1 (AA) or 7:1 (AAA).
+                Normal text is smaller than 24px regular or approximately 18.7px
+                bold. It requires a minimum contrast ratio of 4.5:1 for AA or
+                7:1 for AAA.
               </TooltipContent>
             </Tooltip>
           </div>
@@ -114,7 +119,7 @@ export default function ResultSection({
             }}
             aria-hidden="true"
           >
-            {sampleText}
+            {sampleTextForNormalText}
           </div>
         </div>
         {/* Large text */}
@@ -136,8 +141,9 @@ export default function ResultSection({
                 </button>
               </TooltipTrigger>
               <TooltipContent>
-                Text at least 18px regular or 14px bold. Requires a minimum
-                contrast ratio of 3:1 (AA) or 4.5:1 (AAA).
+                Large text is at least 24px regular or approximately 18.7px
+                bold. It requires a minimum contrast ratio of 3:1 for AA or
+                4.5:1 for AAA.
               </TooltipContent>
             </Tooltip>
           </div>
@@ -150,13 +156,13 @@ export default function ResultSection({
             className="px-2 py-1.5 rounded text-sm text-center border lg:mt-4 lg:w-42 lg:h-10 lg:flex lg:items-center lg:justify-center lg:p-0 tracking-wider"
             style={{
               fontWeight: 'bold',
-              fontSize: '18px',
+              fontSize: '19px',
               backgroundColor: bg.hex,
               color: fg.hex,
             }}
             aria-hidden="true"
           >
-            {sampleText}
+            {sampleTextForLargeText}
           </div>
         </div>
       </div>

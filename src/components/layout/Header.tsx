@@ -11,8 +11,8 @@ export const Header = () => {
       </div>
 
       <p className="text-xs text-slate-600 max-w-2xl">
-        Check WCAG contrast between Tailwind CSS colors, custom hex values, and
-        semantic color tokens.
+        Pick colors directly from the Tailwind palette and check WCAG
+        contrast—without looking up hex values or switching tabs.
       </p>
     </header>
   );
