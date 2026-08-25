@@ -31,7 +31,12 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build"
+    "check": "npm run lint && npm run typecheck && npm run build",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "a11y:check": "playwright test --grep @a11y",
+    "check:all": "npm run check && npm run test:e2e"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
@@ -56,7 +61,9 @@
     "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.57.0",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^20",
     "@types/react": "^19",
