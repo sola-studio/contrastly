@@ -128,3 +128,8 @@ html {
     transition: none !important;
   }
 }
+
+#cc-main #cm__desc {
+  color: #5e6266;
+  opacity: 1;
+}

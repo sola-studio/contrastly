@@ -61,7 +61,7 @@ This makes the result comparable with other WCAG-based contrast checking tools.
 
 ### Requirements
 
-- Node.js 18 or later
+- Node.js 22
 - npm
 
 ### Installation
@@ -122,6 +122,39 @@ This runs:
 - `npm run lint`
 - `npm run typecheck`
 - `npm run build`
+
+### Browser and accessibility tests
+
+Install the Chromium browser used by Playwright once:
+
+```bash
+npx playwright install chromium
+```
+
+Run all browser tests:
+
+```bash
+npm run test:e2e
+```
+
+Run only the automated axe accessibility checks:
+
+```bash
+npm run a11y:check
+```
+
+Useful interactive modes:
+
+```bash
+npm run test:e2e:headed
+npm run test:e2e:ui
+```
+
+The axe tests fail on confirmed rule violations. Results that axe marks as
+`incomplete` require human review and are preserved in the Playwright HTML
+report as an attachment and annotation rather than being treated as a pass or
+failure. Automated checks do not replace keyboard, screen reader, zoom, and
+other manual accessibility testing.
 
 ## External Resources & Privacy
 

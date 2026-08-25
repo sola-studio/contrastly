@@ -20,6 +20,8 @@ const eslintConfig = [
       '**/dist/**',
       '**/build/**',
       '**/coverage/**',
+      '**/playwright-report/**',
+      '**/test-results/**',
       '**/public/**',
       '**/next-env.d.ts',
     ],
@@ -27,8 +29,7 @@ const eslintConfig = [
 
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
 
-  // Next.jsが登録済みのjsx-a11yプラグインに、
-  // recommendedルール一式を追加する
+  // Apply the recommended rules to the jsx-a11y plugin registered by Next.js.
   {
     name: 'jsx-a11y/recommended',
     rules: {

@@ -99,7 +99,7 @@ export function CookieConsentManager() {
         // Initialize Google Consent Mode with default denied state
         setDefaultConsent();
 
-        CookieConsent.run({
+        await CookieConsent.run({
           // Revision number for cookie reset
           revision: 1,
 
