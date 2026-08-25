@@ -113,8 +113,6 @@ export default function ContrastChecker() {
         className="w-full max-w-5xl xl:max-w-[67%] xl:flex-3 scroll-mt-24 focus:outline-none focus-visible:ring-2"
         ref={paletteRef}
         id={colorPaletteSectionId}
-        aria-labelledby="color-palette-heading"
-        role="region"
         tabIndex={-1}
       >
         <h2 id="color-palette-heading" className="sr-only">

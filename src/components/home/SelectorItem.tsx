@@ -73,11 +73,7 @@ export default function SelectorItem({
 
   return (
     <div
-      onClick={(e) => {
-        document.getElementById(radioId)?.focus();
-        handleClickSelecter(targetItemType);
-      }}
-      className={`relative flex flex-col items-center gap-3 rounded-lg p-2 sm:p-4 shadow cursor-pointer
+      className={`relative flex flex-col items-center gap-3 rounded-lg p-2 sm:p-4 shadow
        border text-slate-700 w-full
        ${isSelected ? 'border-2 border-blue-700' : 'border-slate-500'}
         focus-within:ring-2  focus-within:ring-blue-700  focus-within:ring-offset-2
@@ -94,15 +90,6 @@ export default function SelectorItem({
         aria-labelledby={titleId}
         tabIndex={isSelected ? 0 : -1}
         onKeyDown={(e) => {
-          // Ignore if focus is on input or button
-          if ((e.target as HTMLElement)?.closest('input,button,textarea'))
-            return;
-
-          if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            handleClickSelecter(targetItemType);
-          }
-
           const idx = order.indexOf(targetItemType);
           const prevKey = order[(idx - 1 + order.length) % order.length];
           const nextKey = order[(idx + 1) % order.length];
@@ -140,32 +127,33 @@ export default function SelectorItem({
         }}
         className="sr-only"
       />
-      <span
-        className="text-sm font-normal uppercase tracking-widest"
-        id={titleId}
+      <label
+        htmlFor={radioId}
+        className="flex w-full cursor-pointer flex-col items-center gap-3"
       >
-        {title}
-      </span>
+        <span
+          className="text-sm font-normal uppercase tracking-widest"
+          id={titleId}
+        >
+          {title}
+        </span>
 
-      <div
-        className="h-14 w-14 rounded border border-slate-500" // xl:h-18 xl:w-18
-        style={{ backgroundColor: targetColor.hex }}
-        aria-hidden="true"
-      />
-      <span className="text-sm text-slate-600">{targetColor.name}</span>
+        <span
+          className="h-14 w-14 rounded border border-slate-500" // xl:h-18 xl:w-18
+          style={{ backgroundColor: targetColor.hex }}
+          aria-hidden="true"
+        />
+        <span className="text-sm text-slate-600">{targetColor.name}</span>
+      </label>
 
       {/* HEX Input Field (Intermediate input allowed) */}
-      <div
-        className="flex items-center gap-3"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="flex items-center gap-3">
         <input
           type="text"
           value={hexDraft}
           onChange={(e) => setHexDraft(e.target.value)}
           onBlur={commitHexIfValid}
           onKeyDown={(e) => {
-            e.stopPropagation(); // Disable parent radio key handling
             if (e.key === 'Enter') {
               e.preventDefault();
               commitHexIfValid();
@@ -187,10 +175,7 @@ export default function SelectorItem({
         />
       </div>
 
-      <div
-        className="flex flex-col items-center gap-3"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="flex flex-col items-center gap-3">
         {pickerMode[targetItemType] ? (
           <input
             type="color"

@@ -1,4 +1,5 @@
 import { FlatCompat } from '@eslint/eslintrc';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -26,7 +27,17 @@ const eslintConfig = [
 
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
 
+  // Next.jsが登録済みのjsx-a11yプラグインに、
+  // recommendedルール一式を追加する
   {
+    name: 'jsx-a11y/recommended',
+    rules: {
+      ...jsxA11y.flatConfigs.recommended.rules,
+    },
+  },
+
+  {
+    name: 'project-overrides',
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
