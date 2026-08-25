@@ -15,12 +15,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-        launchOptions: {
-          args: ['--disable-blink-features=AutomationControlled'],
-        },
-      },
+      use: { ...devices['Desktop Chrome'] },
     },
   ],
   webServer: {

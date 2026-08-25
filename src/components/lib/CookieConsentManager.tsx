@@ -103,6 +103,11 @@ export function CookieConsentManager() {
           // Revision number for cookie reset
           revision: 1,
 
+          // Keep crawler suppression in production while allowing local E2E coverage.
+          ...(process.env.NODE_ENV !== 'production'
+            ? { hideFromBots: false }
+            : {}),
+
           // Categories
           categories: {
             necessary: {

@@ -28,10 +28,7 @@ export default function About() {
           of everyday UI implementation, without interrupting your workflow to
           look up and transfer color values between tools.
         </p>
-        <footer
-          className="mt-12 sm:mt-10 xl:mt-3"
-          aria-label="More information about how contrast is calculated"
-        >
+        <div className="mt-12 sm:mt-10 xl:mt-3">
           <Link
             href="https://github.com/sola-studio/contrastly#how-contrast-is-calculated"
             className="inline-flex items-center gap-1.5 text-sm text-blue-700 underline underline-offset-2 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 rounded"
@@ -41,7 +38,7 @@ export default function About() {
             How the contrast is calculated
             <ExternalLink size={12} aria-hidden="true" focusable="false" />
           </Link>
-        </footer>
+        </div>
       </div>
     </section>
   );

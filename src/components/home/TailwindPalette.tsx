@@ -135,7 +135,7 @@ export default function TailwindPalette({
                             }}
                             style={{ backgroundColor: hex }}
                             className={cn(
-                              'w-11 h-11 rounded-sm border border-slate-500 cursor-pointer',
+                              'group w-11 h-11 rounded-sm border border-slate-500 cursor-pointer',
                               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700',
                               'focus-visible:ring-offset-2 focus-visible:ring-offset-white',
                               selectedColor === key && 'ring-2 ring-blue-700',
@@ -153,10 +153,10 @@ export default function TailwindPalette({
                               aria-hidden="true"
                               className={cn(
                                 'hidden md:flex w-12 h-12 items-center justify-center',
-                                'md:text-transparent md:transition-colors',
+                                'md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:group-focus-visible:opacity-100',
                                 textColor === '#FFFFFF'
-                                  ? 'md:hover:text-white'
-                                  : 'md:hover:text-black'
+                                  ? 'text-white'
+                                  : 'text-black'
                               )}
                             >
                               {shade}

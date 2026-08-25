@@ -1,4 +1,24 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+async function waitForConsentBannerToClose(page: Page) {
+  await expect(
+    page.getByRole('dialog', {
+      name: 'We use cookies and similar technologies',
+    })
+  ).toBeHidden();
+}
+
+async function getConsentCategories(page: Page): Promise<string[]> {
+  const consentCookie = (await page.context().cookies()).find(
+    ({ name }) => name === 'cc_cookie'
+  );
+  expect(consentCookie).toBeDefined();
+
+  const value = JSON.parse(decodeURIComponent(consentCookie?.value ?? '')) as {
+    categories: string[];
+  };
+  return value.categories;
+}
 
 test.describe('contrast checker', () => {
   test.beforeEach(async ({ page }) => {
@@ -44,6 +64,23 @@ test.describe('contrast checker', () => {
     await expect(result).not.toHaveText(initialResult ?? '');
   });
 
+  test('accepts a full hex value and announces the updated result', async ({
+    page,
+  }) => {
+    const foreground = page.getByLabel('Foreground hex value');
+
+    await foreground.fill('#000000');
+    await foreground.press('Enter');
+
+    await expect(foreground).toHaveValue('#000000');
+    await expect(page.getByText('4.06:1', { exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Contrast ratio 4.06 to 1.' })
+    ).toHaveText(
+      'Contrast ratio 4.06 to 1. Normal text: AA fail, AAA fail. Large text: AA pass, AAA fail.'
+    );
+  });
+
   test('restores the last valid color after invalid input', async ({
     page,
   }) => {
@@ -83,6 +120,11 @@ test.describe('contrast checker', () => {
     const swatch = page.getByRole('button', {
       name: 'Select red 700 (#b91c1c)',
     });
+    const shadeLabel = swatch.locator('span');
+
+    await expect(shadeLabel).toHaveCSS('opacity', '0');
+    await swatch.hover();
+    await expect(shadeLabel).toHaveCSS('opacity', '1');
 
     await swatch.click();
 
@@ -90,6 +132,140 @@ test.describe('contrast checker', () => {
       '#B91C1C'
     );
     await expect(swatch).toHaveAttribute('aria-current', 'true');
+  });
+
+  test('moves through the palette with the keyboard and announces selection', async ({
+    page,
+  }) => {
+    const slate50 = page.getByRole('button', {
+      name: 'Select slate 50 (#f8fafc)',
+    });
+    const gray100 = page.getByRole('button', {
+      name: 'Select gray 100 (#f3f4f6)',
+    });
+
+    await slate50.focus();
+    await slate50.press('ArrowRight');
+    await expect(
+      page.getByRole('button', { name: 'Select gray 50 (#f9fafb)' })
+    ).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await expect(gray100).toBeFocused();
+    await page.keyboard.press('Enter');
+
+    await expect(gray100).toHaveAttribute('aria-current', 'true');
+    await expect(
+      page.getByRole('status').filter({
+        hasText: 'Selected foreground color gray-100-#f3f4f6.',
+      })
+    ).toBeVisible();
+  });
+
+  test('shows pass and fail results that match the calculated ratio', async ({
+    page,
+  }) => {
+    const results = page.getByRole('region', {
+      name: 'Contrast Check Results',
+    });
+
+    await expect(results.getByText('5.16:1', { exact: true })).toBeVisible();
+    await expect(results.getByText('Pass', { exact: true })).toHaveCount(3);
+    await expect(results.getByText('Fail', { exact: true })).toHaveCount(1);
+
+    const foreground = page.getByLabel('Foreground hex value');
+    await foreground.fill('#2563EB');
+    await foreground.press('Enter');
+
+    await expect(results.getByText('1:1', { exact: true })).toBeVisible();
+    await expect(results.getByText('Fail', { exact: true })).toHaveCount(4);
+  });
+});
+
+test.describe('consent choices', () => {
+  test('stores rejected consent and reopens preferences', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Reject optional' }).click();
+    await waitForConsentBannerToClose(page);
+
+    await expect(getConsentCategories(page)).resolves.toEqual(['necessary']);
+
+    await page.getByRole('button', { name: 'Cookie Settings' }).click();
+    await expect(
+      page.getByRole('dialog', { name: 'Privacy Preferences' })
+    ).toBeVisible();
+  });
+
+  test('stores analytics consent and hides the banner', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Accept analytics' }).click();
+    await waitForConsentBannerToClose(page);
+
+    await expect(getConsentCategories(page)).resolves.toEqual([
+      'necessary',
+      'analytics',
+    ]);
+  });
+
+  test('saves and restores the analytics preference', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Manage preferences' }).click();
+
+    const preferencesDialog = page.getByRole('dialog', {
+      name: 'Privacy Preferences',
+    });
+    const analyticsToggle = page.getByRole('checkbox', { name: 'Analytics' });
+    await expect(analyticsToggle).not.toBeChecked();
+    await analyticsToggle.check();
+    await page.getByRole('button', { name: 'Save preferences' }).click();
+    await expect(preferencesDialog).toBeHidden();
+
+    await expect(getConsentCategories(page)).resolves.toEqual([
+      'necessary',
+      'analytics',
+    ]);
+
+    await page.getByRole('button', { name: 'Cookie Settings' }).click();
+    await expect(
+      page.getByRole('checkbox', { name: 'Analytics' })
+    ).toBeChecked();
+  });
+});
+
+test.describe('navigation and focus', () => {
+  test('moves focus to the skip link targets', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Reject optional' }).click();
+
+    const contentLink = page.getByRole('link', { name: 'Skip to content' });
+    await contentLink.focus();
+    await contentLink.press('Enter');
+    await expect(page.locator('#main')).toBeFocused();
+
+    const paletteLink = page.getByRole('link', {
+      name: 'Skip to color palette',
+    });
+    await paletteLink.focus();
+    await paletteLink.press('Enter');
+    await expect(page.locator('#color-palette')).toBeFocused();
+  });
+
+  test('mobile floating navigation moves between the palette and top', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Reject optional' }).click();
+
+    await page.getByRole('button', { name: 'Go to color palette' }).click();
+    const backToTop = page.getByRole('button', {
+      name: 'Back to top, where contrast results are displayed',
+    });
+    await expect(backToTop).toBeVisible();
+    await backToTop.click();
+    await expect(
+      page.getByRole('button', { name: 'Go to color palette' })
+    ).toBeVisible();
   });
 });
 

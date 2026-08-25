@@ -21,7 +21,7 @@ export const AccessibleToastContent = ({ type, children, label }: Props) => {
     <div
       role="alert"
       aria-live="assertive"
-      className="flex items-center gap-2 text-sm"
+      className="flex items-center gap-2 text-sm text-slate-800"
     >
       <span className="sr-only">{label || defaultAriaLabels[type]}</span>
       {children}

@@ -1,3 +1,4 @@
+// src/helpers/index.ts
 import { hexToRgb, relativeLuminance } from './contrasts';
 
 export function getTextColor(hex: string): '#FFFFFF' | '#000000' {
